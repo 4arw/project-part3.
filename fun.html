@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HealthMate - Your Info</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<!-- Navigation -->
+<header class="bg-dark text-white py-5 text-center" style="background-image: url('Blue Illustration Health & Wellness Presentation.jpg'); background-size: cover;">
+  <div class="container">
+    <h1 class="display-1 text-light">Fun</h1>
+  </div>
+
+  <!-- Responsive Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="IMG_5912[1].png" alt="Logo" style="width: 35px; height: 35px;" class="me-2">
+        <span>HealthMate</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="exercises.html">Exercises</a></li>
+          <li class="nav-item"><a class="nav-link" href="diet.html">Diet</a></li>
+          <li class="nav-item"><a class="nav-link" href="consultation.html">Consultation</a></li>
+          <li class="nav-item"><a class="nav-link" href="gym.html">GYM</a></li>
+          <li class="nav-item"><a class="nav-link" href="watch.html">Watch</a></li> 
+          <li class="nav-item"><a class="nav-link" href="questionnaire.html">Questionnaire </a></li>
+          <li class="nav-item"><a class="nav-link" href="calculat.html">Calculate </a></li>
+          <li class="nav-item"><a class="nav-link active" href="fun.html">Fun </a></li>
+          <li class="nav-item"><a class="nav-link " href="portfolio.html">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact us</a></li>
+
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+<!-- Main Content -->
+<div class="container text-center my-4">
+  <div id="puzzle-board" class="d-flex flex-wrap justify-content-center mx-auto rounded"
+       style="width: 450px; height: 450px;">
+  </div>
+
+  <div id="message" class="mt-4 fw-bold text-success fs-4"></div>
+
+  <button type="button" class="btn btn-outline-primary mt-3" data-bs-toggle="tooltip" title="Try swapping the tiles!">
+    Need Help?
+  </button>
+
+  <div class="mt-3">
+    <a class="btn btn-sm btn-primary" data-bs-toggle="collapse" href="#instructions" role="button" aria-expanded="false">
+      Show Instructions
+    </a>
+    <div class="collapse mt-2" id="instructions">
+      <div class="card card-body">
+        Tap any two puzzle pieces to swap them. Try to recreate the original healthy image!
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript Puzzle Logic -->
+<script>
+  const size = 3; // 3x3 puzzle
+  let tiles = [];
+  let selected = [];
+
+  function initPuzzle() {
+    const board = document.getElementById('puzzle-board');
+    board.innerHTML = '';
+    tiles = Array.from({ length: size * size }, (_, i) => i);
+    tiles.sort(() => Math.random() - 0.5); // Shuffle the tiles
+
+    tiles.forEach((tileIndex, position) => {
+      const tile = document.createElement('div');
+      tile.className = 'position-relative';
+      tile.style.width = '150px';
+      tile.style.height = '150px';
+      tile.style.backgroundImage = 'url("66139.jpg")'; // YOUR IMAGE
+      tile.style.backgroundSize = '450px 450px';
+      tile.style.backgroundPosition = `-${(tileIndex % size) * 150}px -${Math.floor(tileIndex / size) * 150}px`;
+      tile.style.cursor = 'pointer';
+      tile.dataset.index = tileIndex;
+
+      // Handle tile click
+      tile.onclick = () => {
+        selected.push(position);
+        if (selected.length === 2) {
+          swapTiles(selected[0], selected[1]);
+          selected = [];
+        }
+      };
+
+      board.appendChild(tile);
+    });
+  }
+
+  function swapTiles(pos1, pos2) {
+    [tiles[pos1], tiles[pos2]] = [tiles[pos2], tiles[pos1]];
+    updateBoard();
+    checkWin();
+  }
+
+  function updateBoard() {
+    const board = document.getElementById('puzzle-board');
+    Array.from(board.children).forEach((tile, i) => {
+      const tileIndex = tiles[i];
+      tile.style.backgroundPosition = `-${(tileIndex % size) * 150}px -${Math.floor(tileIndex / size) * 150}px`;
+    });
+  }
+
+  function checkWin() {
+    const message = document.getElementById('message');
+    if (tiles.every((val, idx) => val === idx)) {
+      message.innerHTML = "🎉 Great job! You completed the puzzle!";
+    } else {
+      message.innerHTML = "";
+    }
+  }
+
+  window.onload = () => {
+    initPuzzle();
+    const tooltipTrigger = document.querySelector('[data-bs-toggle="tooltip"]');
+    new bootstrap.Tooltip(tooltipTrigger);
+  };
+</script>
+
+<!-- Footer -->
+<footer class="bg-primary text-light text-center py-3 mt-5">
+  <p>&copy; 2025 HealthMate. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
+health_puzzle

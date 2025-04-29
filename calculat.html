@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HealthMate - Health Calculators</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header class="bg-dark text-white py-5 text-center" style="background-image: url('Blue Illustration Health & Wellness Presentation.jpg'); background-size: cover;">
+        <div class="container">
+          <h1 class="display-1 text-light">Calculator</h1>
+        </div>
+      
+        <!-- Responsive Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">
+          <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+              <img src="IMG_5912[1].png" alt="Logo" style="width: 35px; height: 35px;" class="me-2">
+              <span>HealthMate</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="exercises.html">Exercises</a></li>
+                <li class="nav-item"><a class="nav-link" href="diet.html">Diet</a></li>
+                <li class="nav-item"><a class="nav-link" href="consultation.html">Consultation</a></li>
+                <li class="nav-item"><a class="nav-link" href="gym.html">GYM</a></li>
+                <li class="nav-item"><a class="nav-link" href="watch.html">Watch</a></li>
+                <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+                <li class="nav-item"><a class="nav-link" href="questionnaire.html">questionnaire </a></li>
+                <li class="nav-item"><a class="nav-link active" href="calculat.html">calculate </a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact us</a></li>
+             
+      
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+    
+
+<!-- Main Content -->
+<main class="container my-5">
+  <div class="card shadow p-4 mb-5">
+    <h3 class="mb-4">💧 Water Intake Calculator</h3>
+
+    <form id="waterForm">
+      <!-- Weight -->
+      <div class="mb-3">
+        <label for="weight" class="form-label">Weight (kg)</label>
+        <input type="number" class="form-control" id="weight" required>
+      </div>
+
+      <!-- Activity Level -->
+      <div class="mb-3">
+        <label class="form-label">Activity Level:</label><br>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="activity" id="low" value="low" required>
+          <label class="form-check-label" for="low">
+            Low (little exercise)
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="activity" id="medium" value="medium">
+          <label class="form-check-label" for="medium">
+            Medium (moderate exercise)
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="activity" id="high" value="high">
+          <label class="form-check-label" for="high">
+            High (heavy exercise)
+          </label>
+        </div>
+      </div>
+
+      <!-- Calculate Button -->
+      <button type="submit" class="btn btn-success w-100">Calculate Water Intake</button>
+    </form>
+
+    <!-- Result -->
+    <div id="waterResult" class="mt-4 fw-bold text-primary"></div>
+  </div>
+
+  <div class="card shadow p-4">
+    <h3 class="mb-4">🔥 Calories Burned Calculator</h3>
+
+    <form id="calorieForm">
+      <!-- Exercise Type -->
+      <div class="mb-3">
+        <label for="exercise" class="form-label">Exercise Type</label>
+        <select class="form-select" id="exercise" required>
+          <option value="">-- Choose Exercise --</option>
+          <option value="running">Running</option>
+          <option value="cycling">Cycling</option>
+          <option value="swimming">Swimming</option>
+        </select>
+      </div>
+
+      <!-- Minutes -->
+      <div class="mb-3">
+        <label for="minutes" class="form-label">Minutes of Exercise</label>
+        <input type="number" class="form-control" id="minutes" required>
+      </div>
+
+      <!-- Calculate Button -->
+      <button type="submit" class="btn btn-danger w-100">Calculate Calories Burned</button>
+    </form>
+
+    <!-- Result -->
+    <div id="calorieResult" class="mt-4 fw-bold text-danger"></div>
+  </div>
+</main>
+
+
+<!-- Footer -->
+<footer class="bg-primary text-white text-center py-3 mt-5">
+    <p>&copy; 2025 HealthMate Team. All rights reserved.</p>
+  </footer>
+  
+
+<!-- JavaScript -->
+<script>
+    // Water Calculator
+    document.getElementById('waterForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent form from submitting normally (reloading the page)
+  
+      const weight = parseFloat(document.getElementById('weight').value); // Get the weight input value and convert to float
+      const activity = document.querySelector('input[name="activity"]:checked').value; // Get the selected activity level
+  
+      let waterLiters = weight * 0.033; // Basic water intake calculation: 0.033 liters per kg
+  
+      // Adjust water intake based on activity level
+      if (activity === "medium") {
+        waterLiters += 0.5; // Add 0.5L for medium activity
+      } else if (activity === "high") {
+        waterLiters += 1; // Add 1L for high activity
+      }
+  
+      // Prepare the result message
+      let message = `💧 You should drink about ${waterLiters.toFixed(2)} liters of water per day.`;
+  
+      // Add extra warning message if weight is above 120kg
+      if (weight > 120) {
+        message += "\n⚠️ Important: Stay extra hydrated.";
+      }
+  
+      // Display the result in the HTML
+      document.getElementById('waterResult').innerText = message;
+    });
+  
+    // Calories Calculator
+    document.getElementById('calorieForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent form from submitting normally
+  
+      const exercise = document.getElementById('exercise').value; // Get selected exercise type
+      const minutes = parseInt(document.getElementById('minutes').value); // Get minutes of exercise and convert to integer
+  
+      let caloriesPerMinute = 0; // Initialize calories burned per minute
+  
+      // Set calories per minute based on exercise type
+      if (exercise === "running") {
+        caloriesPerMinute = 10; // Running burns 10 calories per minute
+      } else if (exercise === "cycling") {
+        caloriesPerMinute = 8; // Cycling burns 8 calories per minute
+      } else if (exercise === "swimming") {
+        caloriesPerMinute = 11; // Swimming burns 11 calories per minute
+      }
+  
+      const totalCalories = caloriesPerMinute * minutes; // Total calories burned = calories/minute * minutes exercised
+  
+      // Prepare the result message
+      let message = `🔥 You burned approximately ${totalCalories} calories.`;
+  
+      // Add motivational message if exercised more than 60 minutes
+      if (minutes > 60) {
+        message += "\n💪 Amazing! You exercised for more than 1 hour!";
+      }
+  
+      // Display the result in the HTML
+      document.getElementById('calorieResult').innerText = message;
+    });
+  </script>
+</body>
+</html>

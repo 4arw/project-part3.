@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Consultation - HealthMate</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ====== HEADER ====== -->
+<header class="bg-dark text-white py-5" style="background-image: url('Blue Illustration Health & Wellness Presentation (2).jpg'); background-position: center; background-repeat: no-repeat; background-size: cover;">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center mb-4">
+          <h1 class="display-1 text-light">Consultation</h1>
+        </div>
+      </div>
+
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-transparent">
+        <div class="container-fluid">
+          <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="IMG_5912[1].png" alt="Logo" class="d-inline-block align-text-top me-2 rounded-circle" width="35" height="35">
+            <span class="fs-6 text-light">HealthMate</span>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="exercises.html">Exercises</a></li>
+              <li class="nav-item"><a class="nav-link" href="diet.html">Diet</a></li>
+              <li class="nav-item"><a class="nav-link active" href="consultation.html">Consultation</a></li>
+              <li class="nav-item"><a class="nav-link" href="gym.html">GYM</a></li>
+              <li class="nav-item"><a class="nav-link" href="watch.html">Watch</a></li>
+              <li class="nav-item"><a class="nav-link" href="questionnaire.html">Questionnaire</a></li>
+              <li class="nav-item"><a class="nav-link" href="calculat.html">Calculate</a></li>
+              <li class="nav-item"><a class="nav-link" href="fun.html">Fun</a></li>
+              <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+              <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+              <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+<!-- ====== MAIN ====== -->
+<main class="container my-5 min-vh-100">
+
+  <!-- Consultation Choice -->
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card mb-4 rounded-3 shadow">
+        <div class="card-body text-center">
+          <h2 class="card-title mb-4">Choose Your Consultation Type</h2>
+          <form id="consultChoiceForm">
+            <div class="d-flex justify-content-center gap-4 mb-4">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="consultType" id="aiConsult" value="ai" required>
+                <label class="form-check-label" for="aiConsult">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">AI Consultation</h5>
+                      <p class="card-text">Free instant health advice</p>
+                      <span class="badge bg-success">FREE</span>
+                    </div>
+                  </div>
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="consultType" id="expertConsult" value="expert">
+                <label class="form-check-label" for="expertConsult">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Expert Consultation</h5>
+                      <p class="card-text">Personalized professional advice</p>
+                      <span class="badge bg-warning text-dark">FROM 49 OMR</span>
+                    </div>
+                  </div>
+                </label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">Continue</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Consultation Section -->
+  <div class="row justify-content-center d-none" id="aiSection">
+    <div class="col-lg-8">
+      <div class="card rounded-3 shadow">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="card-title mb-0">Free AI Consultation</h2>
+            <button class="btn btn-outline-secondary" onclick="resetConsultation()">← Back to options</button>
+          </div>
+          <form id="aiConsultForm">
+            <div class="mb-3">
+              <label for="aiQuestion" class="form-label">Type your health question below:</label>
+              <textarea class="form-control" id="aiQuestion" name="aiQuestion" rows="5" placeholder="e.g., What is the best exercise for back pain?" required></textarea>
+              <div class="invalid-feedback">Please enter at least 20 characters.</div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <button type="submit" class="btn btn-primary me-2">Submit Question</button>
+                <button type="button" class="btn btn-outline-secondary" onclick="clearAiForm()">Clear</button>
+              </div>
+            </div>
+          </form>
+          <div id="aiResponse" class="mt-4 p-3 bg-light rounded border-start border-primary border-4 d-none">
+            <h5>AI Response:</h5>
+            <div id="responseContent"></div>
+            <div class="mt-3">
+              <h6 class="text-muted">Disclaimer: AI responses are for informational purposes only and not a substitute for professional medical advice.</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Expert Consultation Section -->
+  <div class="row justify-content-center d-none" id="expertSection">
+    <div class="col-lg-8">
+      <div class="card rounded-3 shadow">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="card-title mb-0">Expert Consultation</h2>
+            <button class="btn btn-outline-secondary" onclick="resetConsultation()">← Back to options</button>
+          </div>
+          <div id="expertFormContainer"></div>
+
+<script>
+  function createExpertConsultForm() {
+    const form = document.createElement("form");
+    form.id = "expertConsultForm";
+
+    form.innerHTML = `
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="fullName" class="form-label">Full Name</label>
+          <input type="text" class="form-control" id="fullName" name="fullName" required>
+          <div class="invalid-feedback">Please enter your full name.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email Address</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+          <div class="invalid-feedback">Please enter a valid email address.</div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="consultant" class="form-label">Choose a Consultant</label>
+        <select class="form-select" id="consultant" name="consultant" required>
+          <option value="" selected disabled>Select a consultant...</option>
+          <option value="dr_noura" data-price="49">Dr. Noura Al-Kindi - 49 OMR</option>
+          <option value="mr_salim" data-price="59">Mr. Salim Al-Balushi - 59 OMR</option>
+          <option value="dr_sara" data-price="69">Dr. Sara Al-Harthy - 69 OMR</option>
+          <option value="dr_omar" data-price="99">Dr. Omar Al-Mahrouqi - 99 OMR</option>
+          <option value="dr_layla" data-price="129">Dr. Layla Al-Harithi - 129 OMR</option>
+          <option value="dr_khalid" data-price="89">Dr. Khalid Al-Farsi - 89 OMR</option>
+          <option value="dr_fatima" data-price="79">Dr. Fatima Al-Balushi - 79 OMR</option>
+          <option value="dr_mohammed" data-price="89">Dr. Mohammed Al-Riyami - 89 OMR</option>
+          <option value="dr_najwa" data-price="89">Dr. Najwa Al-Harthy - 89 OMR</option>
+        </select>
+        <div class="invalid-feedback">Please select a consultant.</div>
+      </div>
+      <div class="mb-3">
+        <label for="healthIssue" class="form-label">Briefly describe your health issue</label>
+        <textarea class="form-control" id="healthIssue" name="healthIssue" rows="3" required></textarea>
+        <div class="invalid-feedback">Please describe your health issue.</div>
+      </div>
+      <div class="mb-3">
+        <label for="preferredDate" class="form-label">Preferred Consultation Date</label>
+        <input type="date" class="form-control" id="preferredDate" name="preferredDate" required>
+        <div class="invalid-feedback">Please select a future date.</div>
+      </div>
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <button type="submit" class="btn btn-primary me-2">Proceed to Book</button>
+          <button type="button" class="btn btn-outline-secondary" onclick="clearExpertForm()">Clear</button>
+        </div>
+        <div>
+          <h5 class="mb-0" id="consultationPrice">0 OMR</h5>
+        </div>
+      </div>
+    `;
+
+    document.getElementById("expertFormContainer").appendChild(form);
+  }
+
+  // Call this function when you want the form to be generated
+  createExpertConsultForm();
+</script>
+          <div id="successMessage" class="mt-4 p-3 bg-light rounded border-start border-primary border-4 d-none">
+            <h5 class="text-success">Your appointment has been successfully booked! ✅</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="bg-primary text-white text-center py-3">
+  <p>&copy; 2025 HealthMate Team. All rights reserved.</p>
+</footer>
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // Get references to various elements on the page
+  const consultChoiceForm = document.getElementById('consultChoiceForm');
+  const aiSection = document.getElementById('aiSection');
+  const expertSection = document.getElementById('expertSection');
+  const aiConsultForm = document.getElementById('aiConsultForm');
+  const expertConsultForm = document.getElementById('expertConsultForm');
+  const consultantSelect = document.getElementById('consultant');
+  const consultationPrice = document.getElementById('consultationPrice');
+  const preferredDate = document.getElementById('preferredDate');
+  const aiResponse = document.getElementById('aiResponse');
+  const responseContent = document.getElementById('responseContent');
+  const successMessage = document.getElementById('successMessage');
+  
+  // Set minimum preferred date to tomorrow when the page loads
+  document.addEventListener('DOMContentLoaded', () => {
+    const today = new Date();
+    today.setDate(today.getDate() + 1); // Set to tomorrow's date
+    preferredDate.min = today.toISOString().split('T')[0]; // Set the min attribute of the date input
+    preferredDate.value = preferredDate.min; // Set the default value to tomorrow's date
+  });
+  
+  // Show the appropriate consultation section based on the selected type (AI or Expert)
+  consultChoiceForm.addEventListener('submit', (e) => {
+    e.preventDefault(); // Prevent form submission
+    const type = document.querySelector('input[name="consultType"]:checked').value;
+    aiSection.classList.toggle('d-none', type !== 'ai'); // Show/hide AI section
+    expertSection.classList.toggle('d-none', type !== 'expert'); // Show/hide Expert section
+    successMessage.classList.add('d-none'); // Hide success message when switching sections
+    document.querySelector('main').scrollIntoView({ behavior: 'smooth' }); // Smooth scroll to the main section
+  });
+  
+  // Update the consultation price when a consultant is selected
+  consultantSelect.addEventListener('change', () => {
+    const price = consultantSelect.selectedOptions[0].getAttribute('data-price') || '0'; // Get price from selected option
+    consultationPrice.textContent = `${price} OMR`; // Display the price in OMR
+  });
+  
+  // Handle the submission of the AI consultation form
+  aiConsultForm.addEventListener('submit', (e) => {
+    e.preventDefault(); // Prevent form submission
+    const question = document.getElementById('aiQuestion').value.trim(); // Get trimmed input value
+    if (question.length < 20) { // Ensure question is at least 20 characters long
+      document.getElementById('aiQuestion').classList.add('is-invalid'); // Mark the input as invalid if it's too short
+      return;
+    }
+    document.getElementById('aiQuestion').classList.remove('is-invalid'); // Remove invalid class if question is valid
+    responseContent.innerHTML = "<p>Here is a simulated response to your question.</p>"; // Simulate AI response
+    aiResponse.classList.remove('d-none'); // Show the AI response section
+    aiResponse.scrollIntoView({ behavior: 'smooth' }); // Smooth scroll to AI response
+  });
+  
+  // Handle the submission of the expert consultation form
+  expertConsultForm.addEventListener('submit', (e) => {
+    e.preventDefault(); // Prevent form submission
+    if (!expertConsultForm.checkValidity()) { // Check form validity
+      expertConsultForm.classList.add('was-validated'); // Add validation class if form is invalid
+      return;
+    }
+    successMessage.classList.remove('d-none'); // Show success message if form is valid
+    successMessage.scrollIntoView({ behavior: 'smooth' }); // Smooth scroll to success message
+  });
+  
+  // Function to reset the consultation form
+  function resetConsultation() {
+    consultChoiceForm.reset(); // Reset the consultation choice form
+    aiSection.classList.add('d-none'); // Hide AI section
+    expertSection.classList.add('d-none'); // Hide Expert section
+  }
+  
+  // Function to clear the AI consultation form
+  function clearAiForm() {
+    aiConsultForm.reset(); // Reset the AI form
+    aiConsultForm.classList.remove('was-validated'); // Remove validation classes
+    aiResponse.classList.add('d-none'); // Hide the AI response section
+  }
+  
+  // Function to clear the expert consultation form
+  function clearExpertForm() {
+    expertConsultForm.reset(); // Reset the expert form
+    expertConsultForm.classList.remove('was-validated'); // Remove validation classes
+    consultationPrice.textContent = '0 OMR'; // Reset the consultation price to 0
+    const today = new Date();
+    today.setDate(today.getDate() + 1); // Set the preferred date to tomorrow
+    preferredDate.value = today.toISOString().split('T')[0]; // Update the date value
+    successMessage.classList.add('d-none'); // Hide success message
+  }
+</script>
+
+</body>
+</html>

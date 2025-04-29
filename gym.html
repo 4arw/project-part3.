@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find GYMs Near You - HealthMate</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+
+  <header class="bg-dark text-white py-5" style="background-image: url('Blue Illustration Health & Wellness Presentation (2).jpg'); background-position: center; background-repeat: no-repeat; background-size: cover;">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center mb-4">
+          <h1 class="display-1 text-light">GYM</h1>
+        </div>
+      </div>
+
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-transparent">
+        <div class="container-fluid">
+          <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="IMG_5912[1].png" alt="Logo" class="d-inline-block align-text-top me-2" style="width: 35px; height: 35px;">
+            <span class="fs-6 text-light">HealthMate</span>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="exercises.html">Exercises</a></li>
+              <li class="nav-item"><a class="nav-link" href="diet.html">Diet</a></li>
+              <li class="nav-item"><a class="nav-link" href="consultation.html">Consultation</a></li>
+              <li class="nav-item"><a class="nav-link active" href="gym.html">GYM</a></li>
+              <li class="nav-item"><a class="nav-link" href="watch.html">Watch</a></li>
+              <li class="nav-item"><a class="nav-link" href="questionnaire.html">Questionnaire</a></li>
+              <li class="nav-item"><a class="nav-link" href="calculat.html">Calculate</a></li>
+              <li class="nav-item"><a class="nav-link" href="fun.html">Fun</a></li>
+              <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+              <li class="nav-item"><a class="nav-link " href="about.html">About Us</a></li>
+              <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container my-5">
+    <div class="bg-light p-5 rounded shadow gym-section">
+      <h2 class="text-primary mb-4">Find GYMs Near You</h2>
+      <div id="form-container"></div>
+
+      <script>
+          // Wait for the full HTML content to load before running the script
+          document.addEventListener("DOMContentLoaded", function () {
+              // Array of city names for the dropdown
+              const cities = [
+                  "Muscat", "Nizwa", "Sohar", "Salalah", "Sur", "Ibri", "Bahla", "Ibra",
+                  "Khasab", "Dakhiliyah", "Musandam", "Barka", "Rustaq", "Samail", "Al Buraimi", "Shinas"
+              ];
+              // Get the container where the form will be added
+              const formContainer = document.getElementById("form-container");
+              // Create the form element
+              const form = document.createElement("form");
+              form.id = "search-form";
+              form.method = "get";
+              // Create and append a label for the location dropdown
+              const label = document.createElement("label");
+              label.htmlFor = "location";
+              label.textContent = "Select your location:";
+              form.appendChild(label);
+              // Create the select dropdown for city options
+              const select = document.createElement("select");
+              select.id = "location";
+              select.name = "location";
+              select.required = true;
+              select.className = "form-select mb-3";
+              // Add a default option to prompt user selection
+              const defaultOption = document.createElement("option");
+              defaultOption.value = "";
+              defaultOption.textContent = "-- Choose a city --";
+              select.appendChild(defaultOption);
+              // Populate the dropdown with city options
+              cities.forEach(city => {
+                  const option = document.createElement("option");
+                  option.value = city;
+                  option.textContent = city;
+                  select.appendChild(option);
+              });
+              form.appendChild(select);
+              // Create the search button
+              const searchButton = document.createElement("input");
+              searchButton.type = "button";
+              searchButton.className = 'btn btn-primary';
+              searchButton.value = "Search";
+              searchButton.onclick = filterGyms; // Set the click handler to filterGyms function
+              form.appendChild(searchButton);
+              // Append the entire form to the form container
+              formContainer.appendChild(form);
+          });
+          // This object contains gym data categorized by city
+          const gymData = {
+            // --- Muscat gyms ---
+            Muscat: [
+              {
+                name: 'Fitness First Muscat',                  // Gym name
+                rating: '⭐⭐⭐⭐',                                // Gym rating
+                facilities: 'Cardio, Weights, Pool',           // Available facilities
+                packages: [                                    // Membership packages
+                  { name: "Standard", price: "OMR 20" },
+                  { name: "Premium", price: "OMR 35" }
+                ]
+              },
+              {
+                name: 'Flex Gym Muscat',
+                rating: '⭐⭐⭐⭐',
+                facilities: 'Weights, Yoga',
+                packages: [
+                  { name: "Basic", price: "OMR 15" }
+                ]
+              },
+              {
+                name: 'Gold\'s Gym Muscat',
+                rating: '⭐⭐⭐⭐⭐',
+                facilities: 'Cardio, Sauna',
+                packages: [
+                  { name: "Elite", price: "OMR 40" }
+                ]
+              }
+            ],
+
+            // --- Nizwa gyms ---
+            Nizwa: [
+              {
+                name: 'Gold\'s Gym Nizwa',
+                rating: '⭐⭐⭐⭐',
+                facilities: 'Weights, Yoga',
+                packages: [
+                  { name: "Standard", price: "OMR 18" }
+                ]
+              },
+              {
+                name: 'Nizwa Fitness Center',
+                rating: '⭐⭐⭐',
+                facilities: 'Cardio, Weights',
+                packages: [
+                  { name: "Basic", price: "OMR 12" }
+                ]
+              }
+            ],
+
+            // --- Sohar gyms ---
+            Sohar: [
+              {
+                name: 'Iron Pump Sohar',
+                rating: '⭐⭐⭐⭐',
+                facilities: 'Cardio, Weights',
+                packages: [
+                  { name: "Standard", price: "OMR 20" }
+                ]
+              },
+              {
+                name: 'Sohar Power Gym',
+                rating: '⭐⭐⭐',
+                facilities: 'Weights, Yoga',
+                packages: [
+                  { name: "Basic", price: "OMR 14" }
+                ]
+              }
+            ],
+
+            // --- Salalah gyms ---
+            Salalah: [
+              {
+                name: 'Active Gym Salalah',
+                rating: '⭐⭐⭐⭐⭐',
+                facilities: 'Cardio, Personal Coach, Sauna',
+                packages: [
+                  { name: "VIP", price: "OMR 45" }
+                ]
+              },
+              {
+                name: 'Salalah Fit Zone',
+                rating: '⭐⭐⭐⭐',
+                facilities: 'Cardio, Weights',
+                packages: [
+                  { name: "Standard", price: "OMR 22" }
+                ]
+              }
+            ],
+
+            // --- Sur gyms ---
+            Sur: [
+              {
+                name: 'Muscles Club Sur',
+                rating: '⭐⭐⭐',
+                facilities: 'Cardio, Personal Training',
+                packages: [
+                  { name: "Basic", price: "OMR 16" }
+                ]
+              }
+            ],
+
+            // --- Ibri gyms ---
+            Ibri: [
+              {
+                name: 'FitZone Ibri',
+                rating: '⭐⭐⭐⭐',
+                facilities: 'Cardio, Weights, Pool',
+                packages: [
+                  { name: "Standard", price: "OMR 19" }
+                ]
+              }
+            ],
+
+            // --- Bahla gyms ---
+            Bahla: [
+              {
+                name: 'Gym for Life Bahla',
+                rating: '⭐⭐⭐⭐',
+                facilities: 'Cardio, Zumba',
+                packages: [
+                  { name: "Basic", price: "OMR 17" }
+                ]
+              }
+            ],
+
+            // --- Ibra gyms ---
+            Ibra: [
+              {
+                name: 'ActiveFit Gym Ibra',
+                rating: '⭐⭐⭐⭐',
+                facilities: 'Cardio, Yoga, Sauna',
+                packages: [
+                  { name: "Premium", price: "OMR 25" }
+                ]
+              }
+            ],
+
+            // --- Khasab gyms ---
+            Khasab: [
+              {
+                name: 'OceanFit Gym Khasab',
+                rating: '⭐⭐⭐⭐',
+                facilities: 'Weights, Pool',
+                packages: [
+                  { name: "Standard", price: "OMR 21" }
+                ]
+              }
+            ],
+
+            // --- Dakhiliyah gyms ---
+            Dakhiliyah: [
+              {
+                name: 'Central Gym Dakhiliyah',
+                rating: '⭐⭐⭐⭐',
+                facilities: 'Cardio, Weights',
+                packages: [
+                  { name: "Basic", price: "OMR 16" }
+                ]
+              }
+            ],
+
+            // --- Musandam gyms ---
+            Musandam: [
+              {
+                name: 'MountainFit Gym Musandam',
+                rating: '⭐⭐⭐',
+                facilities: 'Cardio, Weights',
+                packages: [
+                  { name: "Standard", price: "OMR 18" }
+                ]
+              }
+            ],
+
+            // --- Barka gyms ---
+            Barka: [
+              {
+                name: 'Barka Fitness Club',
+                rating: '⭐⭐⭐⭐',
+                facilities: 'Weights, Cardio, CrossFit',
+                packages: [
+                  { name: "Elite", price: "OMR 30" }
+                ]
+              },
+              {
+                name: 'Ocean Gym Barka',
+                rating: '⭐⭐⭐',
+                facilities: 'Cardio, Zumba',
+                packages: [
+                  { name: "Basic", price: "OMR 15" }
+                ]
+              }
+            ],
+
+            // --- Rustaq gyms ---
+            Rustaq: [
+              {
+                name: 'Rustaq Strength Center',
+                rating: '⭐⭐⭐⭐',
+                facilities: 'Weights, Cardio',
+                packages: [
+                  { name: "Standard", price: "OMR 20" }
+                ]
+              },
+              {
+                name: 'Fit Life Rustaq',
+                rating: '⭐⭐⭐',
+                facilities: 'Yoga, Weights',
+                packages: [
+                  { name: "Basic", price: "OMR 14" }
+                ]
+              }
+            ],
+
+            // --- Samail gyms ---
+            Samail: [
+              {
+                name: 'Samail Gym & Wellness',
+                rating: '⭐⭐⭐⭐',
+                facilities: 'Cardio, Pool',
+                packages: [
+                  { name: "Premium", price: "OMR 26" }
+                ]
+              }
+            ],
+
+            // --- Al Buraimi gyms ---
+            'Al Buraimi': [
+              {
+                name: 'Al Buraimi PowerHouse',
+                rating: '⭐⭐⭐⭐⭐',
+                facilities: 'Weights, CrossFit, Sauna',
+                packages: [
+                  { name: "Elite", price: "OMR 38" }
+                ]
+              },
+              {
+                name: 'Active Gym Buraimi',
+                rating: '⭐⭐⭐',
+                facilities: 'Cardio, Yoga',
+                packages: [
+                  { name: "Basic", price: "OMR 16" }
+                ]
+              }
+            ],
+
+            // --- Shinas gyms ---
+            Shinas: [
+              {
+                name: 'Shinas Fit Center',
+                rating: '⭐⭐⭐⭐',
+                facilities: 'Weights, Zumba',
+                packages: [
+                  { name: "Standard", price: "OMR 19" }
+                ]
+              },
+              {
+                name: 'Pulse Gym Shinas',
+                rating: '⭐⭐⭐',
+                facilities: 'Cardio, Weights',
+                packages: [
+                  { name: "Basic", price: "OMR 14" }
+                ]
+              }
+            ]
+          };
+
+          // Function to display gym table based on selected location
+          function filterGyms() {
+              const location = document.getElementById('location').value;
+              const gymList = gymData[location] || []; // Get gym list or empty array
+              const gymListContainer = document.getElementById('gym-list');
+              const tableContainer = document.getElementById('gym-table-container');
+              const packageContainer = document.getElementById('package-container');
+              const packageListContainer = document.getElementById('package-list');
+              // Clear any previous gym and package lists
+              gymListContainer.innerHTML = '';
+              packageListContainer.innerHTML = '';
+              // If gyms exist for the selected location
+              if (gymList.length > 0) {
+                  // Loop through each gym and create a row in the table
+                  gymList.forEach((gym, index) => {
+                      const row = document.createElement('tr');
+                      row.innerHTML = `
+                          <td>${location}</td>
+                          <td>${gym.name}</td>
+                          <td>${gym.rating}</td>
+                          <td>${gym.facilities}</td>
+                          <td><button class="btn btn-primary" onclick="showPackages(${index}, '${location}')">View Packages</button></td>
+                      `;
+                      gymListContainer.appendChild(row);
+                  });
+
+                  tableContainer.style.display = 'block'; // Show the gym table
+              } else {
+                  tableContainer.style.display = 'none'; // Hide the table if no gyms found
+              }
+          }
+          // Function to show gym packages when "View Packages" is clicked
+          function showPackages(gymIndex, location) {
+              const gym = gymData[location][gymIndex]; // Get the selected gym data
+              const packageListContainer = document.getElementById('package-list');
+              const packageContainer = document.getElementById('package-container');
+              // Clear any previous packages
+              packageListContainer.innerHTML = '';
+              // Add each package to the list
+              gym.packages.forEach(pkg => {
+                  const packageItem = document.createElement('div');
+                  packageItem.classList.add('list-group-item');
+                  packageItem.innerHTML = `${pkg.name} - ${pkg.price}`;
+                  packageListContainer.appendChild(packageItem);
+              });
+              packageContainer.style.display = 'block'; // Show the packages section
+          }
+          // Function to handle booking (e.g., on a future button click)
+          function bookGym() {
+              alert('Booking successful! We will contact you soon.');
+          }
+      </script>
+
+
+      <div id="gym-table-container" class="gym-list" style="display: none;">
+        <h2 class="text-center my-4">🏠 GYM Locations by Town</h2>
+        <table class="table table-bordered">
+          <theado>
+            <tr>
+              <th>City</th>
+              <th>GYM Name</th>
+              <th>Rating</th>
+              <th>Facilities</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="gym-list"></tbody>
+        </table>
+      </div>
+
+      <div id="package-container" class="package-list" style="display: none;">
+        <h3>Select a Package</h3>
+        <div id="package-list" class="list-group"></div>
+        <input type="button" class="btn btn-primary" value="Book Now" onclick="bookGym()">
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-primary text-white text-center py-3">
+    <p>&copy; 2025 HealthMate Team. All rights reserved.</p>
+  </footer>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

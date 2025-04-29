@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HealthMate - Diet</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="bg-dark text-white py-5" style="background-image: url('Blue Illustration Health & Wellness Presentation (2).jpg'); background-position: center; background-repeat: no-repeat; background-size: cover;">
+    <div class="container text-center">
+      <h1 class="display-1">Diet</h1>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-transparent">
+      <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img src="IMG_5912[1].png" alt="Logo" class="me-2" style="width: 35px; height: 35px;">
+          <span class="fs-6 text-light">HealthMate</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="exercises.html">Exercises</a></li>
+            <li class="nav-item"><a class="nav-link active" href="diet.html">Diet</a></li>
+            <li class="nav-item"><a class="nav-link" href="consultation.html">Consultation</a></li>
+            <li class="nav-item"><a class="nav-link" href="gym.html">GYM</a></li>
+            <li class="nav-item"><a class="nav-link" href="watch.html">Watch</a></li>
+            <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container py-5">
+    <!-- Calorie Calculator -->
+    <section class="mb-5">
+      <h3>Calorie Calculator</h3>
+      <form id="calorieForm" class="row g-3">
+        <div class="col-md-6">
+          <label for="food" class="form-label">Food Name</label>
+          <input type="text" id="food" name="food" class="form-control" required placeholder="e.g., Apple">
+        </div>
+        <div class="col-md-6">
+          <label for="weight" class="form-label">Weight (grams)</label>
+          <input type="number" id="weight" name="weight" class="form-control" required placeholder="e.g., 100">
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Calculate</button>
+        </div>
+      </form>
+      <div id="calorieResult" class="mt-3 alert alert-info d-none"></div>
+    </section>
+
+    <!-- Recipes Section -->
+    <section>
+      <h3 class="mb-4">🍴 Healthy Meals</h3>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <!-- Oatmeal Bowl -->
+        <div class="col">
+          <div class="card h-100">
+            <img src="out bowl.jpg" class="card-img-top" alt="Oatmeal Bowl">
+            <div class="card-body">
+              <h5 class="card-title">Oatmeal Bowl</h5>
+              <p><strong>Ingredients:</strong> Oats, banana, almond butter, chia seeds, cinnamon, almond milk</p>
+              <p><strong>Preparation:</strong> Cook oats, top with fruits and almond butter.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grilled Chicken Salad -->
+        <div class="col">
+          <div class="card h-100">
+            <img src="grilled salad.jpg" class="card-img-top" alt="Grilled Chicken Salad">
+            <div class="card-body">
+              <h5 class="card-title">Grilled Chicken Salad</h5>
+              <p><strong>Ingredients:</strong> Chicken breast, spinach, avocado, tomatoes, olive oil, spices</p>
+              <p><strong>Preparation:</strong> Mix grilled chicken with veggies and drizzle with olive oil.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Avocado Toast -->
+        <div class="col">
+          <div class="card h-100">
+            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=60" class="card-img-top" alt="Avocado Toast">
+            <div class="card-body">
+              <h5 class="card-title">Avocado Toast</h5>
+              <p><strong>Ingredients:</strong> Bread, avocado, lemon juice, chili flakes, egg (optional)</p>
+              <p><strong>Preparation:</strong> Toast bread, spread mashed avocado, and season to taste.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quinoa Veggie Bowl -->
+        <div class="col">
+          <div class="card h-100">
+            <img src="Quinoa bowl.jpg" class="card-img-top" alt="Quinoa Bowl">
+            <div class="card-body">
+              <h5 class="card-title">Quinoa Veggie Bowl</h5>
+              <p><strong>Ingredients:</strong> Quinoa, roasted vegetables, hummus, lemon, herbs</p>
+              <p><strong>Preparation:</strong> Mix quinoa with veggies, top with hummus and herbs.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Yogurt Parfait -->
+        <div class="col">
+          <div class="card h-100">
+            <img src="Yogurt Parfait.jpg" class="card-img-top" alt="Yogurt Parfait">
+            <div class="card-body">
+              <h5 class="card-title">Yogurt Parfait</h5>
+              <p><strong>Ingredients:</strong> Yogurt, granola, berries, honey</p>
+              <p><strong>Preparation:</strong> Layer ingredients in a glass and drizzle with honey.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Salmon -->
+        <div class="col">
+          <div class="card h-100">
+            <img src="Salmon with Veggies.jpg" class="card-img-top" alt="Salmon with Veggies">
+            <div class="card-body">
+              <h5 class="card-title">Baked Salmon & Veggies</h5>
+              <p><strong>Ingredients:</strong> Salmon, broccoli, carrots, olive oil, lemon, garlic</p>
+              <p><strong>Preparation:</strong> Bake salmon and veggies at 200°C for 20 minutes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- More Sections for Snacks and Drinks can follow here... -->
+  </main>
+
+  <footer class="bg-primary text-white text-center py-3">
+    <p>&copy; 2025 HealthMate. All rights reserved.</p>
+  </footer>
+
+  <!-- Bootstrap and JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('calorieForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const weight = parseFloat(document.getElementById('weight').value);
+      const caloriesPerGram = 0.52; // Example: Apple = ~52 calories per 100g
+      const totalCalories = (weight * caloriesPerGram).toFixed(2);
+
+      const result = document.getElementById('calorieResult');
+      result.classList.remove('d-none');
+      result.innerHTML = `Estimated Calories: <strong>${totalCalories}</strong> kcal`;
+    });
+  </script>
+</body>
+</html>

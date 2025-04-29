@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us - HealthMate</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+
+<header class="bg-dark text-white py-5" style="background-image: url('Blue Illustration Health & Wellness Presentation (2).jpg'); background-position: center; background-repeat: no-repeat; background-size: cover;">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mb-4">
+        <h1 class="display-1 text-light">Contact Us</h1>
+      </div>
+    </div>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-transparent">
+      <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img src="IMG_5912[1].png" alt="Logo" class="logo d-inline-block align-text-top me-2" style="width: 35px; height: 35px;">
+          <span class="fs-6 text-light">HealthMate</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="exercises.html">Exercises</a></li>
+            <li class="nav-item"><a class="nav-link" href="diet.html">Diet</a></li>
+            <li class="nav-item"><a class="nav-link" href="consultation.html">Consultation</a></li>
+            <li class="nav-item"><a class="nav-link" href="gym.html">GYM</a></li>
+            <li class="nav-item"><a class="nav-link" href="watch.html">Watch</a></li>
+            <li class="nav-item"><a class="nav-link" href="questionnaire.html">Questionnaire</a></li>
+            <li class="nav-item"><a class="nav-link" href="calculat.html">Calculate</a></li>
+            <li class="nav-item"><a class="nav-link" href="fun.html">Fun</a></li>
+            <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link active" href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="container mt-5 pt-5">
+  <div class="contact-section" id="contactSection">
+    <h2>Contact Us</h2>
+    <script>
+      // Dynamically create and append the form
+      const form = document.createElement('form');
+      form.id = 'contactForm';
+      form.className = 'needs-validation';
+      form.noValidate = true;
+    
+      const divGroup = document.createElement('div');
+      divGroup.className = 'mb-3';
+    
+      const label = document.createElement('label');
+      label.htmlFor = 'message';
+      label.className = 'form-label';
+      label.textContent = 'Your Message:';
+      divGroup.appendChild(label);
+    
+      const textarea = document.createElement('textarea');
+      textarea.id = 'message';
+      textarea.name = 'message';
+      textarea.className = 'form-control';
+      textarea.rows = 6;
+      textarea.placeholder = 'Write your message here...';
+      textarea.required = true;
+      divGroup.appendChild(textarea);
+    
+      const invalidFeedback = document.createElement('div');
+      invalidFeedback.className = 'invalid-feedback';
+      invalidFeedback.textContent = 'Please enter your message.';
+      divGroup.appendChild(invalidFeedback);
+    
+      const submitBtn = document.createElement('button');
+      submitBtn.type = 'submit';
+      submitBtn.className = 'btn btn-primary';
+      submitBtn.textContent = 'Send Message';
+    
+      form.appendChild(divGroup);
+      form.appendChild(submitBtn);
+    
+      document.getElementById('contactSection').prepend(form);
+    </script>
+    
+
+    <div class="social-media mt-4">
+      <h3>Follow and Contact Us on :</h3>
+      <a href="https://www.instagram.com/healthmate" target="_blank" class="btn btn-outline-secondary btn-sm me-2">
+        <i class="bi bi-instagram"></i> Instagram
+      </a>
+      <a href="https://www.youtube.com/healthmate" target="_blank" class="btn btn-outline-danger btn-sm me-2">
+        <i class="bi bi-youtube"></i> YouTube
+      </a>
+      <a href="mailto:healthmate@gmail.com" class="btn btn-outline-info btn-sm">
+        <i class="bi bi-envelope"></i> Email
+      </a>
+    </div>
+  </div>
+
+  <div id="thankYouMessage" class="text-center" style="display: none; padding: 50px;">
+    <h2 class="text-primary">Thank You!</h2>
+    <p>Your message has been sent successfully.<br>
+    Please wait for a response as soon as possible.</p>
+    <a href="index.html" class="btn btn-primary mt-3">Return to Home</a>
+  </div>
+</main>
+
+<script>
+  // Bootstrap form validation
+  (function () {
+    'use strict'
+    var forms = document.querySelectorAll('.needs-validation')
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          } else {
+            event.preventDefault(); // Prevent form submission
+            const message = document.getElementById('message').value.trim();
+            if (message !== '') {
+              document.getElementById('contactSection').style.display = 'none';
+              document.getElementById('thankYouMessage').style.display = 'block';
+            }
+          }
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })()
+</script>
+
+<footer class="bg-primary text-white text-center py-3 mt-5">
+  <p>&copy; 2025 HealthMate Team. All rights reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

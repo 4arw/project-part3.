@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HealthMate - Your Info</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<!-- Navigation -->
+<header class="bg-dark text-white py-5 text-center" style="background-image: url('Blue Illustration Health & Wellness Presentation.jpg'); background-size: cover;">
+  <div class="container">
+    <h1 class="display-1 text-light">Portfolio</h1>
+  </div>
+
+  <!-- Responsive Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="IMG_5912[1].png" alt="Logo" style="width: 35px; height: 35px;" class="me-2">
+        <span>HealthMate</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="exercises.html">Exercises</a></li>
+          <li class="nav-item"><a class="nav-link" href="diet.html">Diet</a></li>
+          <li class="nav-item"><a class="nav-link" href="consultation.html">Consultation</a></li>
+          <li class="nav-item"><a class="nav-link" href="gym.html">GYM</a></li>
+          <li class="nav-item"><a class="nav-link" href="watch.html">Watch</a></li>
+          <li class="nav-item"><a class="nav-link active" href="portfolio.html">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="questionnaire.html">questionnaire </a></li>
+          <li class="nav-item"><a class="nav-link" href="calculat.html">calculate </a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact us</a></li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+<!-- Main Section -->
+<main class="container my-5">
+  <div class="card shadow p-4">
+    <h2 class="mb-4">Your Personal Information</h2>
+    <form id="userInfoForm" class="row g-3 needs-validation" novalidate>
+
+      <div class="col-md-6">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" required>
+        <div class="invalid-feedback">Name is required.</div>
+      </div>
+
+      <div class="col-md-3">
+        <label for="age" class="form-label">Age</label>
+        <input type="number" class="form-control" id="age" required>
+        <div class="invalid-feedback">Age is required.</div>
+      </div>
+
+      <div class="col-md-3">
+        <label for="gender" class="form-label">Gender</label>
+        <select class="form-select" id="gender" required>
+          <option value="">Choose...</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+        <div class="invalid-feedback">Gender is required.</div>
+      </div>
+
+      <div class="col-md-6">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" required>
+        <div class="invalid-feedback">Valid email is required.</div>
+      </div>
+
+      <div class="col-md-6">
+        <label for="phone" class="form-label">Phone</label>
+        <input type="tel" class="form-control" id="phone" required>
+        <div class="invalid-feedback">Phone is required.</div>
+      </div>
+
+      <div class="col-md-6">
+        <label for="weight" class="form-label">Weight (kg)</label>
+        <input type="number" class="form-control" id="weight" required>
+      </div>
+
+      <div class="col-md-6">
+        <label for="height" class="form-label">Height (cm)</label>
+        <input type="number" class="form-control" id="height" required>
+      </div>
+
+      <div class="col-12 text-end">
+        <button type="submit" class="btn btn-success">Submit</button>
+      </div>
+
+    </form>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3 mt-5">
+  <p>&copy; 2025 HealthMate Team. All rights reserved.</p>
+</footer>
+
+<!-- Bootstrap Validation Script -->
+<script>
+  // Immediately Invoked Function Expression (IIFE) to avoid polluting global scope
+  (() => {
+    'use strict'; // Enable strict mode for better error handling and safer code
+
+    // Select all forms that need custom Bootstrap validation
+    const forms = document.querySelectorAll('.needs-validation');
+
+    // Loop over each form and apply validation
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', e => {
+        // If form is invalid, prevent submission and stop event propagation
+        if (!form.checkValidity()) {
+          e.preventDefault(); // Prevent the default form submit action
+          e.stopPropagation(); // Stop the event from bubbling up
+        }
+        // Add Bootstrap's validation classes to trigger visual feedback
+        form.classList.add('was-validated');
+      }, false);
+    });
+  })();
+</script>
+
+
+</body>
+</html>
